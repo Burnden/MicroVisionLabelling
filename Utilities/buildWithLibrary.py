@@ -9,7 +9,7 @@ import skimage.io
 import csv
 import itertools
 import glob
-from pycococreatortools import pycococreatortools as tools
+import pycococreatortools as tools
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -48,7 +48,7 @@ for batch_path in batches_full_path:
             next(annotation) # skip the first comment line
             grouped_annotation = itertools.groupby(annotation, lambda x: x[0])
             for image_file, g in grouped_annotation:
-                
+
                 shape_entries = []
                 attrs = []
                 for x in g:
@@ -62,8 +62,8 @@ for batch_path in batches_full_path:
                 image_full_path = os.path.join(batch_path, image_file)
                 image = skimage.io.imread(image_full_path)
                 height, width = image.shape[:2]
-                
-                
+
+
 
                 for i, p in enumerate(shape_entries):
                     if key_name:
@@ -80,7 +80,7 @@ for batch_path in batches_full_path:
                     else:
                         id = 1
 
-                    
+
 
                     # if (not attr):
                     #     continue
